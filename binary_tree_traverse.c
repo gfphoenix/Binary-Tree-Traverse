@@ -194,3 +194,23 @@ void post_s(struct avl_root *r, void (*fn)(const struct avl_node *, void*a),void
 		}
 	}
 }
+
+
+void level(struct avl_root *r, void (*fn)(const struct avl_node *))
+{
+	struct avl_node *x;
+	std::queue<struct avl_node *>q;
+	if(!r || !r->root)
+		return;
+	x = r->root;
+	q.push(x);
+	while(!q.empty()){
+		x = q.front();
+		q.pop();
+		fn(x);
+		if(x->l)
+			q.push(x->l);
+		if(x->r)
+			q.push(x->r);
+	}
+}
