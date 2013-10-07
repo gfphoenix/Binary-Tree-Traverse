@@ -12,17 +12,21 @@ struct avl_node {
 struct avl_root {
         struct avl_node *root;
 };
-/// 
+///  recursive traverse
 void pre_r(struct avl_root *r, void (*fn)(const struct avl_node *,void *arg),void *arg);
 void mid_r(struct avl_root *r, void (*fn)(const struct avl_node *,void *arg),void *arg);
 void post_r(struct avl_root *r, void (*fn)(const struct avl_node *,void *arg),void *arg);
 
+///  non-recursive traverse using an iterator, with help of parent pointer
 void pre_iter(struct avl_root *r, void (*fn)(const struct avl_node *,void *a),void *arg);
 void mid_iter(struct avl_root *r, void (*fn)(const struct avl_node *,void *a),void *arg);
 void post_iter(struct avl_root *r, void (*fn)(const struct avl_node *,void *a),void *arg);
 
+// non-recursive traverse with help of stack
 void pre_s(struct avl_root *r, void (*fn)(const struct avl_node *,void *a),void *arg);
 void mid_s(struct avl_root *r, void (*fn)(const struct avl_node *, void*a),void*arg);
 void post_s(struct avl_root *r, void (*fn)(const struct avl_node *, void*a),void*arg);
 
+// level first traverse
+void level(struct avl_root *r, void (*fn)(const struct avl_node *))
 #endif
