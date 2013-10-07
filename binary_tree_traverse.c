@@ -1,7 +1,7 @@
 #include "binary_tree_traverse.h"
 #include <cstdio>
 #include <stack>
-
+#include <queue>
 static void __pre(struct avl_node *x, void (*fn)(const struct avl_node *, void *arg),void *arg)
 {
 	fn(x,arg);
